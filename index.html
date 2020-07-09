@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <!-- Font Awesome icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Extern JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+
+   <!-- Custom JS -->
+   <script type="text/javascript" src="assets/js/products.js"></script>
+   <script type="text/javascript" src="assets/js/shoppingcart.js"></script>
+   <script type="text/javascript" src="assets/js/app.js"></script>
+
+     <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <title>Carrito de compras</title>
+
+    </head>
+  <body>
+    <!-- Navigation -->  
+    <nav class="menuNav navbar navbar-light bg-light">
+        <a class="navbar-brand"><img src="assets/images/logo.png" alt="Logotipo Nike" class="logo"></a>
+        <form action="#" name="searchForm" class="form-inline">
+          	<input class="form-control mr-sm-2" type="text" name="search" placeholder="Buscar" aria-label="Search" id="searchBox"value="">
+          	<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+          	<a href="#" class="cart-btn d-flex align-items-center justify-content-center">
+	        	<span class="cartBtn" id="cartBtn">
+	            	<i class="fa fa-shopping-cart" aria-hidden="true" id="cartIcon"></i>
+	        	</span>
+	        </a>
+        </form>
+      </nav>
+
+    <header>
+        <div class="prodSection d-flex align-items-center flex-nowrap">
+          <h1>Nike/</h1>
+          <p class="m-0 p-0">Resultados buscados:</p> 
+          <span class="m-0 p-0" id="productFound"><!--aqui aparecen los resultados buscados--></span>
+        </div>
+    </header>
+
+    <main class="d-flex flex-nowrap justify-content-center">
+      <section class="container d-flex flex-wrap justify-content-between">       		
+        <article class="row d-flex flex-wrap justify-content-center" id="productsContainer">
+           <!-- Aquí irían los productos generados a partir del JSON -->    
+        </article>    
+      </section>
+
+      <aside>
+        <div class="container shoppingCart" id="shoppingCart">
+          <i class="fa fa-close" id="closeCart"></i>
+        	<h2>Carrito de Compras</h2>
+          	<div class="row contProd d-flex flex-row justify-content-center">
+            	<div class="cartContainer col-lg-12" id="contentCart">
+            <!-- Elementos del carrito -->
+              		
+            	</div>
+          	</div>
+          	<hr>
+          	<!-- Precio total -->
+          	<div class="endShop d-flex flex-column flex-wrap">
+            	<h4>Total: $<span id="total"></span></h4>
+            	<button type="button" class="btn btn-secondary btn-sm" id="getTotal">INICIAR COMPRA</button>
+        	</div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="d-flex align-items-center justify-content-center">
+      <div class="copr">© 2020 Copyright:
+        <a href="https://www.linkedin.com/in/nico-foster/">NicoFoster</a>
+      </div>
+    </footer>
+    <!-- Bootstrap Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
