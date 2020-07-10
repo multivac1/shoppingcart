@@ -7,11 +7,11 @@ $(document).ready(function() {
         
     //oculto y muestro el carrito  
     cartIcon.click(function() { 
-        shoppingCart.show();  
+        shoppingCart.fadeIn();  
     });  
 
     closeCart.click(function() {
-        shoppingCart.hide();
+        shoppingCart.fadeOut();
     });
 
     
