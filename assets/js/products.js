@@ -33,7 +33,7 @@ $(document).ready(function() {
         `;
         
     }
-         
+
     function renderProducts(products) {
         products.forEach(product => {
             var htmlTemplate = getCard(product);
@@ -42,7 +42,7 @@ $(document).ready(function() {
     }
 
     function searchProducts(key) {
-        var localJson = `http://127.0.0.1:8080/assets/js/data.json`; 
+        var localJson = `http://127.0.0.1:8080/assets/js/data.json/`; 
         
         $.ajax({
             method: "GET",
@@ -50,6 +50,7 @@ $(document).ready(function() {
         }).done(function (data) {
             $('#productsContainer').empty();
             renderProducts(data);
+            $('#searchlength').html(` (${(data.length)})`);
         }).fail(function (error) {
             console.log(error);
         });
