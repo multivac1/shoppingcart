@@ -1,0 +1,40 @@
+[
+    {
+        "id": 0,
+        "img": "http://127.0.0.1:5500/assets/images/legend_8.jpg",
+        "name":"Botin Legend 8",
+        "price": 3000
+    },
+    {
+        "id": 1,
+        "img": "http://127.0.0.1:5500/assets/images/phantom_v2.jpg",
+        "name":"Botin Phantom V2",
+        "price": 4000
+    },
+    {
+        "id": 2,
+        "img": "http://127.0.0.1:5500/assets/images/phantom_vp.jpg",
+        "name":"Botin Phantom VP",
+        "price": 5000
+    },
+    {
+        "id": 3,
+        "img": "http://127.0.0.1:5500/assets/images/superfly_6.jpg",
+        "name":"Botin Superfly 6",
+        "price": 6000
+    },
+    {
+        "id": 4,
+        "img": "http://127.0.0.1:5500/assets/images/legend_8.jpg",
+        "name":"Botin Legend 8",
+        "price": 3000
+    },
+    {
+        "id": 5,
+        "img": "http://127.0.0.1:5500/assets/images/phantom_v2.jpg",
+        "name":"Botin Phantom V2",
+        "price": 4000
+    }
+]
+
+
