@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-
+var shoppingCart;
     //guardo los elementos en variables
     var cartIcon = $("#cartIcon");
     var closeCart = $("#closeCart");
@@ -7,13 +7,11 @@ $(document).ready(function() {
         
     //oculto y muestro el carrito  
     cartIcon.click(function() { 
-        shoppingCart.fadeIn();  
+        shoppingCart.toggle('fast');  
     });  
 
     closeCart.click(function() {
         shoppingCart.fadeOut();
     });
-
-    
 
 })
