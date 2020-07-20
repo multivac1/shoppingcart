@@ -1,106 +1,67 @@
 //VARIABLES GLOBALES
-var searchInput;
+var searchInput; // ALMACENA LA BUSQUEDA QUE INGRESA EL USUARIO
+var buttonSearch; 
+var searchResults;
+var productFound;
+var lengthProductFound;
+var desibledSubmitBtn;
+var onCartCounter;
+var btnBuy;
+var arrayFromSearch = [];
+var cart = [];
+var total = 0;
+var products;
 
-//INICIO DEL DOCUMENTO
+// INICIO DEL DOCUMENTO
 $(document).ready(function() { 
 
-    //llamado AJAX LOCAL        
-    var localJson = `http://127.0.0.1:5500/assets/scripts/data.json`;
-
-    $.ajax({
-        method: "GET",
-        url: localJson,
-        dataType: "json"
-    }).done(function (data) {
-        $('#productsContainer').empty();
-        renderProducts(data);
-        $('#searchlength').html(`(${(data.length)})`);
-    }).fail(function (error) {
-        console.log(error);
-    });
-
-
-    //VALIDACION DEL FORMULARIO con libreria VALIDATE()
+    //VALIDACION DEL FORMULARIO CON LIBRERIA VALIDATE()
     $("form[name='searchForm']").validate({
         rules: {
             search: {
-                required: true,
+                required: false,
                 minlength: 4
             }
         },
         messages: {
             search: {
-                required: 'Campo obligatorio',
-                minlength: 'debe contener al menos 4 caracteres',
+                minlength: '<< Complete su Búsqueda',
             }
         },
         submitHandler: function (form) {
-            searchProducts($('input[name="search"]').val())
+            filter();
         }
     });
 
-    //HTML TEMPLATE DE RENDERIZADO DE PRODUCTOS
-    function getCard(product) {
-        return `
-        <div class="col-lg-3  m-3">
-            <div class="card" style="width: 18rem;">
-                <img class="img-fluid" src="${product.img}" alt="...">
-                <div class="card-body p-0" id="item">
-                    <h5 class="card-title" id="title" name="item">${product.name}</h5>
-                    <p class="card-text" id="price">$${product.price}</p>
-                    <div class="d-flex row-nowrap">
-                        <button class="btnBuy btn btn-primary m-1 btn-sm">Comprar</button>
-                        <button class="btn btn-primary m-1 btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `;
-         
-    }
+    // DESHABILITO BOTON DE BUSQUEDA
+    desibledSubmitBtn = $("#searchForm button[type='button']").attr("disabled", true);
+    // HABILITO BOTON DE BUSQUEDA SI SE INGRESA ALGUN VALOR
+    $("#searchForm input.required").change(function () {
+        var valid = true;
+        $.each($("#myForm input.required"), function (index, value) {
+            if(!$(value).val()){
+               valid = false;
+            }
+        });
+        if(valid){
+            $(desibledSubmitBtn).attr("disabled", false);
+        } 
+        else{
+            $(desibledSubmitBtn).attr("disabled", true);
+        }
+    });
 
-    //MOSTRAR LOS PRODUCTOS
-    function renderProducts(products) {
-        products.forEach(product => {
-            var htmlTemplate = getCard(product);
-            
-            $('#productsContainer').append(htmlTemplate);
-        });               
-    }
-    
-})
-
-//FILTRO
-searchProducts();
-function searchProducts() { 
-
-}
-
-// AGREGO BUSQUEDA AL SPAN PRODUCTFOUND
-$('#search-btn').click(function() {
-
-    searchInput = $('input[name="search"]');
-    
-    $('#productFound').html(`<p>${searchInput.val()}</p>`);
-    
-});
-//FIN DEL DOCUMENTO
-
-//CONTADOR DE PRODUCTOS ENCONTRADOS
-var counter = $('#counter');
-var btnBuy =  $('.btnBuy');
+//CONTADOR DE PRODUCTOS AGREGADOS AL CARRITO
+onCartCounter = $('#counter');
+btnBuy =  $('.btnBuy');
 
 $('body').on('click', '.btnBuy', function(){
 
-    counter.text( +counter.text() + 1 );
+    onCartCounter.text( +onCartCounter.text() + 1 );
     
-    // alert('click en comprar boton');
-
 });
 
+})
 
 
 
-
-
-   
