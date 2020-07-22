@@ -1,4 +1,5 @@
-var localJson = [
+// ARRAY DE OBJETOS
+var data = [
     {
         "id": 0,
         "img": "../assets/images/legend_8.jpg",
@@ -25,22 +26,25 @@ var localJson = [
     }
 ];
 
+/////////////////////////////////////////////////////
 
 searchInput = document.getElementById('searchBox'); //selecciono el input donde escribe el usuario
 buttonSearch = document.getElementById('search-btn'); //selecciono el boton de buscar
-searchResults = document.getElementById('productsContainer'); 
+productsContainer = document.getElementById('productsContainer'); 
 productFound = document.getElementById('productFound');
 lengthProductFound = document.getElementById('lengthProductFound');
 
 var searchFilter = ()=>{ // de form.value viene lo que escribio el usuario
-    searchResults.innerHTML = '';
-    
-    var inputText = searchInput.value.toLowerCase(); // en esta variable almaceno lo que el usuario escribio y lo paso a minusculas
+    searchResults = [];
 
-    for(let product of localJson) { //loop para recorrer en el json cada producto
+    productsContainer.innerHTML = '';
+    
+    var inputSearch = searchInput.value.toLowerCase(); // en esta variable almaceno lo que el usuario escribio y lo paso a minusculas
+
+    for(let product of data) { //loop para recorrer en el json cada producto
         let productName = product.name.toLowerCase(); //paso el nombre del producto del json a minusculas
-        if(productName.indexOf(inputText) !== -1) {
-            searchResults.innerHTML += `
+        if(productName.indexOf(inputSearch) !== -1) {
+            productsContainer.innerHTML += `
             <div class="card col-sm-2 m-3" style="width: 18rem;">
                 <img class="img-fluid" src="${product.img}" alt="...">
                 <div class="card-body p-0" id="item">
@@ -52,12 +56,13 @@ var searchFilter = ()=>{ // de form.value viene lo que escribio el usuario
                     </div>
                 </div>
             </div>
-            `
+            `;
+            searchResults.push(product);
        }
    }
     
-    if(searchResults.innerHTML === '') {
-        searchResults.innerHTML += `
+    if(productsContainer.innerHTML === '') {
+        productsContainer.innerHTML += `
             <div class="col-sm-12 m-5"">
                 <p>Producto no encontrado...</p>
             </div>
@@ -66,20 +71,24 @@ var searchFilter = ()=>{ // de form.value viene lo que escribio el usuario
 };
 
 
-searchFilter();   
-                                                   
 
-// IMPRIMO PRODUCTOS CON EVENTO CLICK
-buttonSearch.addEventListener('click', searchFilter);
+function renderSearch() {
 
-// IMPRIMO PRODUCTOS CON EVENTO KEYUP
-searchInput.addEventListener('keyup', searchFilter);
+    // IMPRIMO PRODUCTOS CON EVENTO CLICK
+    buttonSearch.addEventListener('click', searchFilter);
 
-// AGREGO BUSQUEDA AL SPAN PRODUCTFOUND CON EVENTO KEYUP
-searchInput.addEventListener('keyup', function() {
- 
-    productFound.innerHTML = `<p>${$('#searchBox').val()}</p>`;
+    // IMPRIMO PRODUCTOS CON EVENTO KEYUP
+    searchInput.addEventListener('keyup', searchFilter);
 
-   lengthProductFound.innerHTML = //ACA NO SE CÓMO DECLARAR PARA AGREGAR LA CANTIDAD DE PRODUCTOS ENCONTRADOS EN LA BUSQUEDA.length;
+    // AGREGO BUSQUEDA AL SPAN PRODUCTFOUND CON EVENTO KEYUP
+    searchInput.addEventListener('keyup', function() {
+        
+        // IMPRIMO LO QUE ESCRIBE EL USUARIO EN TIEMPO REAL
+        productFound.innerHTML = `<p>${$('#searchBox').val()}</p>`;
+        lengthProductFound.innerHTML = searchResults.length;
+    })
+}
 
-});
+searchFilter();
+renderSearch();  
+

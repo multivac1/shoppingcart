@@ -1,16 +1,18 @@
 //VARIABLES GLOBALES
 var searchInput; // ALMACENA LA BUSQUEDA QUE INGRESA EL USUARIO
 var buttonSearch; 
-var searchResults;
+var productsContainer;
+var searchResults = [];
 var productFound;
 var lengthProductFound;
 var desibledSubmitBtn;
 var onCartCounter;
 var btnBuy;
-var arrayFromSearch = [];
-var cart = [];
 var total = 0;
 var products;
+var shoppingCart;
+var closeCart;
+var cartIcon;
 
 // INICIO DEL DOCUMENTO
 $(document).ready(function() { 
