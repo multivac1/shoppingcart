@@ -1,94 +1,65 @@
-// ARRAY DE OBJETOS
-var data = [
-    {
-        "id": 0,
-        "img": "../assets/images/legend_8.jpg",
-        "name":"Botin Legend 8",
-        "price": 3000
-    },
-    {
-        "id": 1,
-        "img": "../assets/images/phantom_v2.jpg",
-        "name":"Botin Phantom V2",
-        "price": 4000
-    },
-    {
-        "id": 3,
-        "img": "../assets/images/phantom_vp.jpg",
-        "name":"Botin Phantom VP",
-        "price": 5000
-    },
-    {
-        "id": 4,
-        "img": "../assets/images/superfly_6.jpg",
-        "name":"Botin Superfly 6",
-        "price": 6000
-    }
-];
-
-/////////////////////////////////////////////////////
-
-searchInput = document.getElementById('searchBox'); //selecciono el input donde escribe el usuario
-buttonSearch = document.getElementById('search-btn'); //selecciono el boton de buscar
+// LLAMADO A ELEMENTOS DEL DOM
+searchInput = document.getElementById('searchBox'); 
+buttonSearch = document.getElementById('search-btn'); 
 productsContainer = document.getElementById('productsContainer'); 
-productFound = document.getElementById('productFound');
-lengthProductFound = document.getElementById('lengthProductFound');
+productFound = document.getElementById('productFound'); 
+lengthProductFound = document.getElementById('lengthProductFound'); 
 
-var searchFilter = ()=>{ // de form.value viene lo que escribio el usuario
+// FUNCIÓN PARA FILTRAR BÚSQUEDA 
+searchFilter = () => { 
+    
     searchResults = [];
 
-    productsContainer.innerHTML = '';
+    productsContainer.innerHTML = ''; // Vacía el string para evitar lista infinita
     
-    var inputSearch = searchInput.value.toLowerCase(); // en esta variable almaceno lo que el usuario escribio y lo paso a minusculas
+    inputSearch = searchInput.value.toLowerCase(); // Almacena lo que se escribe y lo pasa a minusculas
 
-    for(let product of data) { //loop para recorrer en el json cada producto
-        let productName = product.name.toLowerCase(); //paso el nombre del producto del json a minusculas
-        if(productName.indexOf(inputSearch) !== -1) {
-            productsContainer.innerHTML += `
-            <div class="card col-sm-2 m-3" style="width: 18rem;">
-                <img class="img-fluid" src="${product.img}" alt="...">
-                <div class="card-body p-0" id="item">
-                    <h5 class="card-title" id="title" name="item">${product.name}</h5>
-                    <p class="card-text" id="price">$${product.price}</p>
-                    <div class="d-flex row-nowrap">
-                        <button class="btnBuy btn btn-primary m-1 btn-sm">Comprar</button>
-                        <button class="btn btn-primary m-1 btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            </div>
-            `;
+    for(product of products.data) { // Loop para recorrer cada producto del array
+
+        let productName = product.name.toLowerCase(); // Pasa el nombre del producto a minusculas
+
+        // Compara búsqueda del usuario dentro del nombre de cada producto. Si la encuentra, retorna cualquier comparación distinta a -1 y lo concatena
+        if(productName.indexOf(inputSearch) !== -1) { 
+
+            productsContainer.innerHTML +=  products.buildHtmlProduct(product);
             searchResults.push(product);
-       }
-   }
-    
-    if(productsContainer.innerHTML === '') {
+        }
+    };
+
+    if(productsContainer.innerHTML === '') { // Si el resultado es igual a un string vació imprime mensaje
         productsContainer.innerHTML += `
-            <div class="col-sm-12 m-5"">
+            <div class="col-sm-12 m-2"">
                 <p>Producto no encontrado...</p>
             </div>
-       `;       
+       `;     
    }
-};
-
-
-
-function renderSearch() {
-
-    // IMPRIMO PRODUCTOS CON EVENTO CLICK
-    buttonSearch.addEventListener('click', searchFilter);
-
-    // IMPRIMO PRODUCTOS CON EVENTO KEYUP
-    searchInput.addEventListener('keyup', searchFilter);
-
-    // AGREGO BUSQUEDA AL SPAN PRODUCTFOUND CON EVENTO KEYUP
-    searchInput.addEventListener('keyup', function() {
-        
-        // IMPRIMO LO QUE ESCRIBE EL USUARIO EN TIEMPO REAL
-        productFound.innerHTML = `<p>${$('#searchBox').val()}</p>`;
-        lengthProductFound.innerHTML = searchResults.length;
-    })
+   
 }
 
-searchFilter();
+// FUNCIÓN PARA RENDERIZAR PRODUCTOS BUSCADOS
+function renderSearch() {
+
+    // Imprime productos con evento "click"
+    buttonSearch.addEventListener('click', searchFilter);
+
+    // Imprime productos con evento "keyup"
+    searchInput.addEventListener('keyup', searchFilter);
+    
+    // Imprime la búsqueda del usuario en tiempo real
+    // Agrega búsqueda dentro de "#productoFound" con evento "keyup" 
+    // imprime cantidad de productos encontrados
+    searchInput.addEventListener('keyup', function() {
+        
+        productFound.innerHTML = `<p>${$('#searchBox').val()}</p>`
+
+        lengthProductFound.innerHTML = searchResults.length;
+        
+    })
+
+}
+
+
+// LLAMO A LAS FUNCIONES
+
 renderSearch();  
 

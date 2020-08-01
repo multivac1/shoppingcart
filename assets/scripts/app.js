@@ -1,22 +1,67 @@
 //VARIABLES GLOBALES
-var searchInput; // ALMACENA LA BUSQUEDA QUE INGRESA EL USUARIO
-var buttonSearch; 
-var productsContainer;
-var searchResults = [];
-var productFound;
-var lengthProductFound;
-var desibledSubmitBtn;
-var onCartCounter;
-var btnBuy;
-var total = 0;
+var searchFilter; // Filtra y concatena la busqueda
+var inputSearch; // Almacena y pasa a minusculas la busqueda
+var searchInput; // Input de búsqueda
+var buttonSearch; // Botón de búsqueda
+var productsContainer; // Contenedor de productos
+var productFound; // Contenedor que muestra el texto de la busqueda
+var lengthProductFound; // Contenedor que muestra cantidad de productos encontrados 
+var searchResults = []; // Almacena array de objetos encontrados en la búsqueda 
+var disabledSubmitBtn; // Obtiene el btn de busqueda y lo deshabilita
+var onCartCounter; // Contenedor del btn del carrito. Muestra la cantindad de productos agregados al carrito
+var btnBuy; // Botón de cada producto
+var cartIcon; // ïcono del carrito
+var closeCart; // Ícono (X) para cerrar carrito
+var shoppingCartContainer; // Contenedor del carrito
+var confirmOrder; //
 var products;
-var shoppingCart;
-var closeCart;
-var cartIcon;
 
-// INICIO DEL DOCUMENTO
-$(document).ready(function() { 
 
+var totalPrice;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Función para agregar productos al carrito llamando al metodo getById (busca por Id de producto) de Products 
+function addToCart(id) {
+    let product = products.getById(id)[0];
+    shoppingCart.add(product);
+}
+// Eliminar producto del carrito
+function deleteItem(id) {
+    let product = products.getById(id)[0];
+    shoppingCart.deleteProduct(product);
+}
+function cleanCart() {
+    shoppingCart.cleanAll();
+}
+
+// INICIO OBJETOS PARA SHOPPINGCART
+
+shoppingCart = new ShoppingCart();
+shoppingCart.populate();
+shoppingCart.buildCart('contentCart');
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// INICIO DEL DOCUMENTO 
+$(document).ready(function() {
+
+    // ALMECENO RUTA AJAX LOCAL         
+    let localJson = `../assets/scripts/data.json`;
+    
+    // LLAMO AL JSON. CREO EL OBJETO PRODUCTOS Y RENDERIZO LAS BUSQUEDAS EN TIEMPO REAL
+    $.ajax({
+        method: "GET",
+        url: localJson,
+        dataType: "json"
+    }).done(function (data) {
+        products = new Products();
+        products.init(data);
+        products.buildList('productsContainer', 'data');
+        renderSearch();  
+    }).fail(function (error) {
+        console.log(error);
+    });
+    
     //VALIDACION DEL FORMULARIO CON LIBRERIA VALIDATE()
     $("form[name='searchForm']").validate({
         rules: {
@@ -31,39 +76,47 @@ $(document).ready(function() {
             }
         },
         submitHandler: function (form) {
-            filter();
+            searchFilter();
         }
     });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // DESHABILITO BOTON DE BUSQUEDA
-    desibledSubmitBtn = $("#searchForm button[type='button']").attr("disabled", true);
+    disabledSubmitBtn = $("#searchForm button[type='button']").attr("disabled", true);
     // HABILITO BOTON DE BUSQUEDA SI SE INGRESA ALGUN VALOR
     $("#searchForm input.required").change(function () {
-        var valid = true;
-        $.each($("#myForm input.required"), function (index, value) {
-            if(!$(value).val()){
+        let valid = true;
+        $.each($("#myForm input.required"), function (value) {
+            if(!$(value).val()) {
                valid = false;
             }
         });
-        if(valid){
-            $(desibledSubmitBtn).attr("disabled", false);
+        if(valid) {
+            $(disabledSubmitBtn).attr("disabled", false);
         } 
-        else{
-            $(desibledSubmitBtn).attr("disabled", true);
+        else {
+            $(disabledSubmitBtn).attr("disabled", true);
         }
     });
 
-//CONTADOR DE PRODUCTOS AGREGADOS AL CARRITO
-onCartCounter = $('#counter');
-btnBuy =  $('.btnBuy');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$('body').on('click', '.btnBuy', function(){
+    // ANIMACIÓN CONTENEDOR CARRITO
+    //guardo los elementos en variables
+    cartIcon = $("#cartIcon");
+    closeCart = $("#closeCart");
+    shoppingCartContainer = $("#shoppingCart");
+        
+    // Oculto y muestro el carrito  
+    cartIcon.click(function() { 
+        shoppingCartContainer.toggle('fast');  
+    });  
 
-    onCartCounter.text( +onCartCounter.text() + 1 );
+    closeCart.click(function() {
+        shoppingCartContainer.fadeOut();
+    });
     
-});
-
 })
-
 
 

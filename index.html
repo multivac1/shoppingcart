@@ -16,13 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"> 
 
     <!-- Extern JS -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
-
-   <!-- Custom JS -->
-   <script type="text/javascript" src="assets/scripts/shoppingcart.js" defer></script>
-   <script type="text/javascript" src="assets/scripts/search.js" defer></script>
-   <script type="text/javascript" src="assets/scripts/app.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>  
+    
+    <!-- Custom JS -->
+    <script type="text/javascript" src="assets/scripts/search.js" defer></script>
+    <script type="text/javascript" src="assets/scripts/products.js" defer></script>
+    <script type="text/javascript" src="assets/scripts/shoppincart.js" defer></script>
+    <script type="text/javascript" src="assets/scripts/app.js" defer></script>
 
 
      <!-- Styles -->
@@ -30,25 +31,26 @@
     
     <title>Carrito de compras</title>
 
-    </head>
+  </head>
+
   <body>
     <!-- Navigation -->  
     <nav class="menuNav navbar navbar-light bg-light">
-        <a class="navbar-brand"><img src="assets/images/logo.png" alt="Logotipo Nike" class="logo"></a>
+        <a href="index.html" class="navbar-brand"><img src="assets/images/logo.png" alt="Logotipo Nike" class="logo"></a>
         <form action="#" name="searchForm" class="form-inline" id="searchForm">
           	<input class="form-control mr-sm-2 required" type="text" name="search" placeholder="Buscar" aria-label="Search" id="searchBox"value="">
-          	<button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+          	<button class="btn btn-outline-dark my-2 my-sm-0" type="button" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
           	<a href="#" class="cart-btn d-flex align-items-center justify-content-center">
 	        	<span class="cartBtn" id="cartBtn">
                 <i class="fa fa-shopping-cart" aria-hidden="true" id="cartIcon"></i>
-                <p id="counter">0</p>
+                <p id="counter"></p>
 	        	</span>
 	        </a>
         </form>
       </nav>
 
     <header>
-        <div class="prodSection d-flex align-items-center flex-nowrap">
+        <div class="prodResult d-flex align-items-center flex-nowrap">
           <h1>Nike/</h1>
           <p class="m-0 p-0">Resultados buscados:</p>
           <span class="m-0 pl-1" id="lengthProductFound"><!--aqui aparecen la cantidad de productos retornados--></span> 
@@ -58,9 +60,10 @@
 
     <main class="d-flex flex-nowrap justify-content-center">
       <section class="container d-flex flex-wrap justify-content-between">       		
-        <article class="row d-flex flex-wrap justify-content-center" id="productsContainer">
-           <!-- Aquí irían los productos generados a partir del JSON -->
-        </article>    
+        <article class="row d-flex flex-wrap justify-content-center" style="margin: 100px auto 200px auto; width: 100%;" id="productsContainer">
+           <!-- Productos generados a partir del JSON -->  
+        
+        </article> 
       </section>
 
       <aside>
@@ -70,26 +73,20 @@
           	<div class="row contProd d-flex flex-row justify-content-center">
             	<div class="cartContainer col-lg-12" id="contentCart">
                 <!-- Elementos del carrito -->
-                <ul id="carrito" class="list-group"></ul>
-                <hr>
-                <!-- Precio total -->
-                <p class="text-right">Total: <span id="total"></span>&euro;</p>	
-            	</div>
-          	</div>
-          	  <hr>
-            	<button type="button" class="btn btn-secondary btn-sm" id="getTotal">INICIAR COMPRA</button>
-        	</div>
+              </div>
+            </div>
         </div>
       </aside>
     </main>
 
     <footer class="d-flex align-items-center justify-content-center">
       <div class="copr">© 2020 Copyright:
-        <a href="https://www.linkedin.com/in/nico-foster/">NicoFoster</a>
+        <a href="https://www.linkedin.com/in/nico-foster/" target="_blank">NicoFoster</a>
       </div>
     </footer>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <!-- Bootstrap Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>
