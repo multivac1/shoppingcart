@@ -16,14 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"> 
 
     <!-- Extern JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>  
-    
-    <!-- Custom JS -->
-    <script type="text/javascript" src="assets/scripts/search.js" defer></script>
-    <script type="text/javascript" src="assets/scripts/products.js" defer></script>
-    <script type="text/javascript" src="assets/scripts/shoppincart.js" defer></script>
-    <script type="text/javascript" src="assets/scripts/app.js" defer></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+
+   <!-- Custom JS -->
+   <script type="text/javascript" src="assets/scripts/search.js" defer></script>
+   <script type="text/javascript" src="assets/scripts/products.js" defer></script>
+   <script type="text/javascript" src="assets/scripts/ShoppinCart.js" defer></script>
+   <script type="text/javascript" src="assets/scripts/app.js" defer></script>
 
 
      <!-- Styles -->
@@ -31,8 +31,7 @@
     
     <title>Carrito de compras</title>
 
-  </head>
-
+    </head>
   <body>
     <!-- Navigation -->  
     <nav class="menuNav navbar navbar-light bg-light">
@@ -43,7 +42,7 @@
           	<a href="#" class="cart-btn d-flex align-items-center justify-content-center">
 	        	<span class="cartBtn" id="cartBtn">
                 <i class="fa fa-shopping-cart" aria-hidden="true" id="cartIcon"></i>
-                <p id="counter"></p>
+                <p id="counter">0</p>
 	        	</span>
 	        </a>
         </form>
@@ -61,9 +60,8 @@
     <main class="d-flex flex-nowrap justify-content-center">
       <section class="container d-flex flex-wrap justify-content-between">       		
         <article class="row d-flex flex-wrap justify-content-center" style="margin: 100px auto 200px auto; width: 100%;" id="productsContainer">
-           <!-- Productos generados a partir del JSON -->  
-        
-        </article> 
+           <!-- Productos generados a partir del JSON -->
+        </article>    
       </section>
 
       <aside>
@@ -84,9 +82,8 @@
         <a href="https://www.linkedin.com/in/nico-foster/" target="_blank">NicoFoster</a>
       </div>
     </footer>
-    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <!-- Bootstrap Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>
