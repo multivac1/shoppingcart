@@ -3,36 +3,42 @@
         "id": "P1",
         "img": "../assets/images/legend_8.jpg",
         "name":"Botin Legend 8",
-        "price": 3000
+        "price": 3000,
+        "info":"DESCRIPCIÓN: Disponible en azul y negro. Talles 37 al 44."
     },
     {
         "id": "P2",
         "img": "../assets/images/phantom_v2.jpg",
         "name":"Botin Phantom V2",
-        "price": 4000
+        "price": 4000,
+        "info":"DESCRIPCIÓN: Disponible en rojo y negro. Talles 37 al 46."
     },
     {
         "id": "P3",
         "img": "../assets/images/phantom_vp.jpg",
         "name":"Botin Phantom VP",
-        "price": 5000
+        "price": 5000, 
+        "info":"DESCRIPCIÓN: Disponible en verde. Talles 39 al 44."
     },
     {
         "id": "P4",
         "img": "../assets/images/superfly_6.jpg",
         "name":"Botin Superfly 6",
-        "price": 6000
+        "price": 6000,
+        "info":"DESCRIPCIÓN: Disponible en rojo y blanco. Talles 38 al 45."
     },
     {
         "id": "P5",
         "img": "../assets/images/mercurial.jpg",
         "name":"Botin Mercurial",
-        "price": 7000
+        "price": 7000,
+        "info":"DESCRIPCIÓN: Disponible en celeste. Talles 37 al 43."
     },
     {
         "id": "P6",
         "img": "../assets/images/vapor_12.jpg",
         "name":"Botin Vapor 12",
-        "price": 8000
+        "price": 8000,
+        "info":"DESCRIPCIÓN: Disponible en gris. Talles 39 al 46."
     }
 ]
