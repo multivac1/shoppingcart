@@ -110,9 +110,17 @@ main {
     margin-top: 100px;
 }
 
+.notfound {
+    width: 100%;
+    background-color: lightgrey;
+    color: grey;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
 /* SHOPPING CART */
 .shoppingCart {
-    display: none;*/
+    display: none;
     margin: 20px auto auto 20px;
     padding: 20px;
     width: 350px;
@@ -122,6 +130,10 @@ main {
 
 .shoppingCart.active {
     display: block;
+}
+
+#contenedorCompra {
+    display: none;
 }
 
 #closeCart {
