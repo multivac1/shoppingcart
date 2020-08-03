@@ -112,6 +112,7 @@ main {
 
 .notfound {
     width: 100%;
+    height: auto;
     background-color: lightgrey;
     color: grey;
     font-size: 1.2rem;
@@ -132,7 +133,7 @@ main {
     display: block;
 }
 
-#contenedorCompra {
+#shopContainer {
     display: none;
 }
 
