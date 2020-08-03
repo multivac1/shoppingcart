@@ -65,7 +65,7 @@
       </section>
 
       <aside>
-        <div class="container shoppingCart" id="shoppingCart">
+        <div class="container shoppingCart mb-5" id="shoppingCart">
           <i class="fa fa-close" id="closeCart"></i>
         	<h2>Carrito de Compras</h2>
           	<div class="row contProd d-flex flex-row justify-content-center">
@@ -73,27 +73,27 @@
                 <!-- Elementos del carrito -->
               </div>
             </div>
-            <div id="contenedorCompra">
-              <form>
+            <div class="mt-4" id="shopContainer">
+              <form action="#" name="shopForm" id="shopForm">
                 <div class="form-group">
                   <label for="nCard">Numero de tarjeta</label>
-                  <input type="number" class="form-control" id="nCard" placeholder="Ingrese los números de su tarjeta">
+                  <input type="number" name="creditNumber" class="form-control" id="nCard" placeholder="Ingrese los números de su tarjeta" required>
                 </div>
                 <div class="form-group">
                   <label for="fullName">Nombre y Apellido</label>
-                  <input type="text" class="form-control" id="fullName" placeholder="Ingrese su nombre tal cual figura en la tarjeta">
+                  <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Ingrese su nombre tal cual figura en la tarjeta" required>
                 </div>
                 <div class="form-group">
                   <label for="expiryDate">Vencimiento</label>
-                  <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA">
+                  <input type="number" name="expiryDate" class="form-control" id="expiryDate" placeholder="MM/AA" required>
                 </div>
                 <div class="form-group">
                   <label for="secNumber">Número de Seguridad</label>
-                  <input type="number" class="form-control" id="secNumber" placeholder="CVC">
+                  <input type="number" name="secNumber" class="form-control" id="secNumber" placeholder="CVC" required>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-dark btn-sm">FINALIZAR COMPRA</button>
-                  <button type="submit" class="btn btn-light btn-sm">CANCELAR</button>
+                  <button type="button" class="btn btn-dark btn-sm" id="endShopping">FINALIZAR COMPRA</button>
+                  <button type="reset" class="btn btn-light btn-sm" id="cancelShopping">CANCELAR</button>
                 </div>
                 </form>
             </div>
