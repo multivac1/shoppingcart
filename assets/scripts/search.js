@@ -1,10 +1,3 @@
-// LLAMADO A ELEMENTOS DEL DOM
-searchInput = document.getElementById('searchBox'); 
-buttonSearch = document.getElementById('search-btn'); 
-productsContainer = document.getElementById('productsContainer'); 
-productFound = document.getElementById('productFound'); 
-lengthProductFound = document.getElementById('lengthProductFound'); 
-
 // FUNCIÓN PARA FILTRAR BÚSQUEDA 
 searchFilter = () => { 
     
@@ -27,7 +20,8 @@ searchFilter = () => {
     };
 
     if(productsContainer.innerHTML === '') { // Si el resultado es igual a un string vació imprime mensaje
-        productsContainer.innerHTML += `
+        productsContainer.innerHTML += 
+        `
             <div class="notfound col-sm-12 m-2">
                 <p>Producto no encontrado...</p>
             </div>
@@ -50,16 +44,11 @@ function renderSearch() {
     // imprime cantidad de productos encontrados
     searchInput.addEventListener('keyup', function() {
         
-        productFound.innerHTML = `<p>${$('#searchBox').val()}</p>`
+    productFound.innerHTML = `<p>${$('#searchBox').val()}</p>`
 
-        lengthProductFound.innerHTML = searchResults.length;
+    lengthProductFound.innerHTML = searchResults.length;
         
     })
 
 }
-
-
-// LLAMO A LAS FUNCIONES
-
-renderSearch();  
 

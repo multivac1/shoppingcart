@@ -12,7 +12,7 @@ function Products() {
         return this.data.filter((product)=> product.id === id)
     }
 
-    // Metodo que crea y retorna la estructura en el DOM   
+    // Metodo que crea y retorna la estructura del producto  
     this.buildHtmlProduct = (product) => {
         return `
             <div class="card col-lg-4 m-3">
@@ -30,6 +30,7 @@ function Products() {
         `
     }
 
+    // Método que imprime la estructura del producto en el DOM
     this.buildList = (containerId, sourceData) => {
         let container = document.getElementById(containerId);
         container.innerHTML = "";

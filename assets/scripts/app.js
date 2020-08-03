@@ -15,10 +15,22 @@ var closeCart; // Ícono (X) para cerrar carrito
 var shoppingCartContainer; // Contenedor del carrito
 var confirmOrder; 
 var products;
-var shopContainer = $('#shopContainer');
-var endShopping = $('#endShopping');
-var cancelShopping = $('#cancelShopping');
+var shopContainer; 
+var endShopping;
+var cancelShopping; 
 var totalPrice;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// LLAMADO A ELEMENTOS DEL DOM
+searchInput = document.getElementById('searchBox'); 
+buttonSearch = document.getElementById('search-btn'); 
+productsContainer = document.getElementById('productsContainer'); 
+productFound = document.getElementById('productFound'); 
+lengthProductFound = document.getElementById('lengthProductFound'); 
+shopContainer = $('#shopContainer');
+endShopping = $('#endShopping');
+cancelShopping = $('#cancelShopping');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -65,16 +77,15 @@ cancelShopping.click(function() {
 });  
 
 // INICIO OBJETOS PARA SHOPPINGCART
-
 shoppingCart = new ShoppingCart();
 shoppingCart.populate();
 shoppingCart.buildCart('contentCart');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// INICIO DEL DOCUMENTO 
+// INICIO DOCUMENTO CON JQUERY AL CARGAR EL DOM
 $(document).ready(function() {
-
+    
     // ALMECENO RUTA AJAX LOCAL         
     let localJson = `../assets/scripts/data.json`;
     
@@ -105,7 +116,7 @@ $(document).ready(function() {
                 minlength: '<< Complete su Búsqueda',
             }
         },
-        submitHandler: function (form) {
+        submitHandler: function () {
             searchFilter();
         }
     });
