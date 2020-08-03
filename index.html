@@ -51,7 +51,7 @@
     <header>
         <div class="prodResult d-flex align-items-center flex-nowrap">
           <h1>Nike/</h1>
-          <p class="m-0 p-0">Resultados buscados:</p>
+          <p class="m-0 p-0">Botines / Resultados buscados:</p>
           <span class="m-0 pl-1" id="lengthProductFound"><!--aqui aparecen la cantidad de productos retornados--></span> 
           <span class="m-0 p-0" id="productFound"><!--aqui replico el nombre de los resultados buscados--></span>
         </div>
@@ -72,6 +72,30 @@
             	<div class="cartContainer col-lg-12" id="contentCart">
                 <!-- Elementos del carrito -->
               </div>
+            </div>
+            <div id="contenedorCompra">
+              <form>
+                <div class="form-group">
+                  <label for="nCard">Numero de tarjeta</label>
+                  <input type="number" class="form-control" id="nCard" placeholder="Ingrese los números de su tarjeta">
+                </div>
+                <div class="form-group">
+                  <label for="fullName">Nombre y Apellido</label>
+                  <input type="text" class="form-control" id="fullName" placeholder="Ingrese su nombre tal cual figura en la tarjeta">
+                </div>
+                <div class="form-group">
+                  <label for="expiryDate">Vencimiento</label>
+                  <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA">
+                </div>
+                <div class="form-group">
+                  <label for="secNumber">Número de Seguridad</label>
+                  <input type="number" class="form-control" id="secNumber" placeholder="CVC">
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-dark btn-sm">FINALIZAR COMPRA</button>
+                  <button type="submit" class="btn btn-light btn-sm">CANCELAR</button>
+                </div>
+                </form>
             </div>
         </div>
       </aside>
