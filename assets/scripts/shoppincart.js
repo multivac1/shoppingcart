@@ -16,7 +16,6 @@ function ShoppingCart() {
         this.cart.push(item);
         localStorage.setItem('cart', JSON.stringify(this.cart));
         this.buildCart('contentCart');
-        document.getElementById('confirmOrder').removeAttribute("disabled");
         this.calculateTotalPrice()
     }
 
@@ -74,7 +73,7 @@ function ShoppingCart() {
         </ul>
         <p class="text-left">Total:<span id="total"></span></p>	
         <div class="text-center">
-            <button type="button" class="btn btn-dark btn-sm" id="confirmOrder" disabled>INICIAR COMPRA</button>
+            <button type="button" class="btn btn-dark btn-sm" id="confirmOrder" onclick="confirmOrder()">INICIAR COMPRA</button>
             <button type="button" class="btn btn-light btn-sm" id="cleanCart" onclick="cleanCart()">VACIAR CARRITO</button>
         <div>    
         `
@@ -98,7 +97,8 @@ function ShoppingCart() {
             total +=  product.price;
         });
         this.renderTotal(total, 'total');
-    }  
+    }
+
 }
 
             

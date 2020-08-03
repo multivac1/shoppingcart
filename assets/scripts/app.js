@@ -15,7 +15,7 @@ var closeCart; // Ícono (X) para cerrar carrito
 var shoppingCartContainer; // Contenedor del carrito
 var confirmOrder; //
 var products;
-
+let prueba = $('#contenedorCompra');
 
 var totalPrice;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,13 +25,34 @@ function addToCart(id) {
     let product = products.getById(id)[0];
     shoppingCart.add(product);
 }
-// Eliminar producto del carrito
+// Elimina producto del carrito
 function deleteItem(id) {
     let product = products.getById(id)[0];
     shoppingCart.deleteProduct(product);
 }
+// Vacía el carrito
 function cleanCart() {
     shoppingCart.cleanAll();
+}
+// Alert más info x producto
+function moreInfo(id) {
+    let product = products.getById(id)[0];
+    alert(product.info);
+}
+// Verifica si el carrito esta vació e imprime alerta, de lo contrario confirma el comienzo de la orden de compra
+function confirmOrder() {
+
+    
+
+        if(shoppingCart.cart.length == '') {
+            alert('Oops, parece que tu carrito esta vacío');
+        }
+        else {
+            //console.log('hay productos');
+            prueba.show('slow');
+            
+        }
+ 
 }
 
 // INICIO OBJETOS PARA SHOPPINGCART

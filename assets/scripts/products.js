@@ -17,15 +17,15 @@ function Products() {
         return `
             <div class="card col-lg-4 m-3">
                 <img class="img-fluid" style="width: 100%;" src="${product.img}" alt="Botin Nike">
+                <hr>
                 <div class="card-body" id="item">
                     <h2 class="card-title" id="title" name="item">${product.name}</h2>
-                    <p class="card-text" id="price">$${product.price}</p>
+                    <p class="card-text" id="price">$ ${product.price}</p>
                     <div class="d-flex row-nowrap">
-                        <button type="button" class="btnBuy btn btn-primary m-1 btn-sm" onclick="addToCart('${product.id}')">Comprar</button>
-                        <button type="button" class="btn btn-primary m-1 btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                        <button type="button" class="btnBuy btn btn-secondary m-1 btn-sm" onclick="addToCart('${product.id}')">Comprar</button>
+                        <button type="button" class="moreInfo btn btn-primary m-1 btn-sm" onclick="moreInfo('${product.id}')"><i class="fa fa-eye" aria-hidden="true"></i></button>
                     </div>
                 </div>
-            </div>
             </div>
         `
     }

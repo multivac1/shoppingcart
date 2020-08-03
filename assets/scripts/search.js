@@ -28,7 +28,7 @@ searchFilter = () => {
 
     if(productsContainer.innerHTML === '') { // Si el resultado es igual a un string vació imprime mensaje
         productsContainer.innerHTML += `
-            <div class="col-sm-12 m-2"">
+            <div class="notfound col-sm-12 m-2">
                 <p>Producto no encontrado...</p>
             </div>
        `;     
