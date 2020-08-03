@@ -13,11 +13,13 @@ var btnBuy; // Botón de cada producto
 var cartIcon; // ïcono del carrito
 var closeCart; // Ícono (X) para cerrar carrito
 var shoppingCartContainer; // Contenedor del carrito
-var confirmOrder; //
+var confirmOrder; 
 var products;
-let prueba = $('#contenedorCompra');
-
+var shopContainer = $('#shopContainer');
+var endShopping = $('#endShopping');
+var cancelShopping = $('#cancelShopping');
 var totalPrice;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Función para agregar productos al carrito llamando al metodo getById (busca por Id de producto) de Products 
@@ -33,27 +35,34 @@ function deleteItem(id) {
 // Vacía el carrito
 function cleanCart() {
     shoppingCart.cleanAll();
+    shopContainer.hide('slow'); 
 }
 // Alert más info x producto
 function moreInfo(id) {
     let product = products.getById(id)[0];
     alert(product.info);
 }
-// Verifica si el carrito esta vació e imprime alerta, de lo contrario confirma el comienzo de la orden de compra
+// Verifica si el carrito esta vació e imprime alerta, de lo contrario ejecuta el comienzo de la orden de compra
 function confirmOrder() {
 
-    
-
-        if(shoppingCart.cart.length == '') {
-            alert('Oops, parece que tu carrito esta vacío');
-        }
-        else {
-            //console.log('hay productos');
-            prueba.show('slow');
-            
-        }
- 
+    if(shoppingCart.cart.length == '') {  
+        alert('Oops, parece que tu carrito esta vacío');
+        shopContainer.hide('slow');
+    }
+    else {
+        shopContainer.show('slow');   
+    }
 }
+// Simula el fin de la compra imprimiendo alerta, vaciando el carrito y cerrando el contenedor
+endShopping.click(function() { 
+    cleanCart();
+    alert('¡Su compra se realizó con éxito!');
+});  
+// Cancela la compra imprimiendo alerta, vaciando el carrito y cerrando el contenedor
+cancelShopping.click(function() { 
+    cleanCart();
+    alert('¡Ha cancelado su compra!');
+});  
 
 // INICIO OBJETOS PARA SHOPPINGCART
 
@@ -83,7 +92,7 @@ $(document).ready(function() {
         console.log(error);
     });
     
-    //VALIDACION DEL FORMULARIO CON LIBRERIA VALIDATE()
+    //VALIDACION DEL FORMULARIO DE BÚSQUEDA CON LIBRERIA VALIDATE()
     $("form[name='searchForm']").validate({
         rules: {
             search: {
@@ -98,6 +107,56 @@ $(document).ready(function() {
         },
         submitHandler: function (form) {
             searchFilter();
+        }
+    });
+
+    //VALIDACION DEL FORMULARIO DE COMPRA CON LIBRERIA VALIDATE()
+    $("form[name='shopForm']").validate({
+        rules: {
+            creditNumber: {
+                required: true,
+                minlength: 16,
+                maxlength: 16,
+            }, 
+            fullName: {
+                required: true,
+                rangelength:[10,30]
+            },
+            expiryDate: {
+                required: true,
+                number : true,
+                min: 4,
+                max: 4,
+            },
+            secNumber: {
+                required: true,
+                number : true,
+                min: 3,
+                max: 3,
+            }
+        },
+        messages: {
+            creditNumber: {
+                required: 'Campo obligatorio',
+                minlength: 'Parece que faltan números de su tarjeta',
+                maxlength: 'Parece que ha ingresado algún dato erróneo'
+            },
+            fullName: {
+                required: 'Campo obligatorio',
+                rangelength: 'Ingrese Nombre y Apellido completo'
+            },
+            expiryDate: {
+                required: 'Campo obligatorio',
+                number: 'Sólo se permiten números',
+                min: 'Ingrese la fecha de vencimiento',
+                max: 'Campo obligatorio'
+            },
+            secNumber: {
+                required: 'Campo obligatorio',
+                number: 'Sólo se permiten números',
+                min: 'Ingrese los 3 números de seguridad',
+                max: 'Ingrese los 3 números de seguridad'
+            }
         }
     });
 
