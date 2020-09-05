@@ -2,17 +2,14 @@ function Products() {
 
     this.data = [];
   
-    // Metodo que inicializa Products con el parámetro del array data
     this.init = (data) => {
         this.data = data;
     }
 
-    // Método que busca el id del producto en Json
     this.getById = (id) => {
         return this.data.filter((product)=> product.id === id)
     }
 
-    // Metodo que crea y retorna la estructura del producto  
     this.buildHtmlProduct = (product) => {
         return `
             <div class="card col-lg-4 m-3">
@@ -32,7 +29,6 @@ function Products() {
         `
     }
 
-    // Método que imprime la estructura del producto en el DOM
     this.buildList = (containerId, sourceData) => {
         let container = document.getElementById(containerId);
         container.innerHTML = "";
