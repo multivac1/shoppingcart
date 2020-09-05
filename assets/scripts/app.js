@@ -34,27 +34,26 @@ cancelShopping = $('#cancelShopping');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Función para agregar productos al carrito llamando al metodo getById (busca por Id de producto) de Products 
 function addToCart(id) {
     let product = products.getById(id)[0];
     shoppingCart.add(product);
 }
-// Elimina producto del carrito
+
 function deleteItem(id) {
     let product = products.getById(id)[0];
     shoppingCart.deleteProduct(product);
 }
-// Vacía el carrito
+
 function cleanCart() {
     shoppingCart.cleanAll();
     shopContainer.hide('slow'); 
 }
-// Alert más info x producto
+
 function moreInfo(id) {
     let product = products.getById(id)[0];
     alert(product.info);
 }
-// Verifica si el carrito esta vació e imprime alerta, de lo contrario ejecuta el comienzo de la orden de compra
+
 function confirmOrder() {
 
     if(shoppingCart.cart.length == '') {  
@@ -65,31 +64,26 @@ function confirmOrder() {
         shopContainer.show('slow');   
     }
 }
-// Simula el fin de la compra imprimiendo alerta, vaciando el carrito y cerrando el contenedor
 endShopping.click(function() { 
     cleanCart();
     alert('¡Su compra se realizó con éxito!');
 });  
-// Cancela la compra imprimiendo alerta, vaciando el carrito y cerrando el contenedor
+
 cancelShopping.click(function() { 
     cleanCart();
     alert('¡Ha cancelado su compra!');
 });  
 
-// INICIO OBJETOS PARA SHOPPINGCART
 shoppingCart = new ShoppingCart();
 shoppingCart.populate();
 shoppingCart.buildCart('contentCart');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// INICIO DOCUMENTO CON JQUERY AL CARGAR EL DOM
 $(document).ready(function() {
-    
-    // ALMECENO RUTA AJAX LOCAL         
+       
     let localJson = `../assets/scripts/data.json`;
     
-    // LLAMO AL JSON. CREO EL OBJETO PRODUCTOS Y RENDERIZO LAS BUSQUEDAS EN TIEMPO REAL
     $.ajax({
         method: "GET",
         url: localJson,
@@ -103,7 +97,6 @@ $(document).ready(function() {
         console.log(error);
     });
     
-    //VALIDACION DEL FORMULARIO DE BÚSQUEDA CON LIBRERIA VALIDATE()
     $("form[name='searchForm']").validate({
         rules: {
             search: {
@@ -121,7 +114,6 @@ $(document).ready(function() {
         }
     });
 
-    //VALIDACION DEL FORMULARIO DE COMPRA CON LIBRERIA VALIDATE()
     $("form[name='shopForm']").validate({
         rules: {
             creditNumber: {
@@ -173,7 +165,6 @@ $(document).ready(function() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // DESHABILITO BOTON DE BUSQUEDA
     disabledSubmitBtn = $("#searchForm button[type='button']").attr("disabled", true);
     // HABILITO BOTON DE BUSQUEDA SI SE INGRESA ALGUN VALOR
     $("#searchForm input.required").change(function () {
@@ -193,7 +184,6 @@ $(document).ready(function() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // ANIMACIÓN CONTENEDOR CARRITO
     //guardo los elementos en variables
     cartIcon = $("#cartIcon");
     closeCart = $("#closeCart");
