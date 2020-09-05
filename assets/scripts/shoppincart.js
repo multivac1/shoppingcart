@@ -1,26 +1,20 @@
 function ShoppingCart() {
     
-    // Array vacío para almacenar los productos seleccionados
     this.cart = [];
 
     let total = 0;
 
-   // Método para llenar cart con localStorage o inicializarlo vacío.
    this.populate = () => {
         this.cart = (localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [];
     }
 
-    // Método que agrega el parámetro recibido al array cart, convirtiendo el objeto en string
-    // También suma la cantidad de productos agregados dentro del icono del carrito
     this.add = (item) => {
         this.cart.push(item);
         localStorage.setItem('cart', JSON.stringify(this.cart));
         this.buildCart('contentCart');
         this.calculateTotalPrice()
     }
-
-    // Método que eliminar los productos del carrito y del storage
-    // También resta la cantidad de productos agregados dentro del icono del carrito
+    
     this.deleteProduct = (id) => {
         this.cart.splice(id, 1);
         localStorage.setItem('cart', JSON.stringify(this.cart));
@@ -28,7 +22,6 @@ function ShoppingCart() {
         this.calculateTotalPrice()
     }
 
-    // Método que elimina todos los productos del carrito y coloca en 0 el contador de productos
     this.cleanAll = () => {
     this.cart = [];
     localStorage.removeItem('cart')
@@ -36,12 +29,10 @@ function ShoppingCart() {
     this.calculateTotalPrice()
     }
 
-    // Retorna el array cart
     this.get = () => {
         return this.cart;
     }
 
-    // Metodo que crea la estructura en el DOM de los productos que va agregando el usuario
     this.buildList = () => {
         let html = '';
         this.cart.forEach(product => {
@@ -57,7 +48,6 @@ function ShoppingCart() {
         return html;
     }
 
-    // Metodo que crea e imprime la estructura del shopping cart y la cantidad de productos dentro del carrito
     this.buildCart = (containerId) => {
         let container = document.getElementById(containerId);
 
@@ -81,16 +71,14 @@ function ShoppingCart() {
 
         cartCounter.innerHTML = c;
 
-        this.calculateTotalPrice(); // Persisto la operación en el carrito
+        this.calculateTotalPrice();
     }
 
-    // Método que imprime calculateTotalPrice
     this.renderTotal = (itemPrice) => {
         let span = document.getElementById('total');
         span.innerText = ` $ ${itemPrice}`;
     }
 
-    // Método que calcula el precio total de todos los productos en el carrito
     this.calculateTotalPrice = () => {
         total = 0;
         this.cart.forEach(function(product){
